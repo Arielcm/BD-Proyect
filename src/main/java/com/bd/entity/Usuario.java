@@ -4,19 +4,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Usuario {
 
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idUsuario;
+	@NotBlank
     private String nombreUsuario;
+	@NotBlank
     private String apellidoUsuario;
+	@NotBlank
     private String telefonoUsuario;
+	@NotBlank
     private String direccionUsuario;
-    private Long dni;
+	@NotBlank
+    private String dni;
+	@NotBlank
+	@Size(max = 1)
     private Integer esJefe;
+	@NotBlank
     private String area;
     
     
@@ -52,10 +63,10 @@ public class Usuario {
 	public void setDireccionUsuario(String direccionUsuario) {
 		this.direccionUsuario = direccionUsuario;
 	}
-	public Long getDni() {
+	public String getDni() {
 		return dni;
 	}
-	public void setDni(Long dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 	public Integer getEsJefe() {
