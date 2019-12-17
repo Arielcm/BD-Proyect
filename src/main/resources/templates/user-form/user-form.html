@@ -1,5 +1,5 @@
 
-<form id="userForm" th:object="${userForm}" method="post" class="form" role="form" th:action="@{/userForm}">
+<form id="userForm" th:object="${userForm}" method="post" class="form" role="form" th:action="${editMode} ?@{/editUser} :@{/userForm}">
 	<input class="form-control" type="hidden" th:field="${userForm.idUsuario}">
 	<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Nombre</label>
@@ -40,23 +40,29 @@
 	<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Area</label>
 		<div class="col-lg-9">
-			<input class="form-control" type="text" th:field="${userForm.area}">
+			
+				<select th:field="${userForm.area}" class="form-control">
+				  <option value="" selected>Seleccionar Area</option>
+				  <option value="Administracion">Administracion</option>
+				  <option value="Comercial">Comercial</option>
+				  <option value="Tecnico">Tecnico</option>
+				</select>
 			<div class="alert-danger" th:if="${#fields.hasErrors('area')}" th:errors="*{area}">Name Error</div>
 		</div>
 	</div>
 	
 	<div class="form-group row">
-		<label class="col-lg-3 col-form-label form-control-label">Jefe</label>
+		<label class="col-lg-3 col-form-label form-control-label">Es Jefe del Area?</label>
 		<div class="col-lg-9">
-			<input class="form-control" type="text" th:field="${userForm.esJefe}">
+			<input class="form-control" type="checkbox" th:field="${userForm.esJefe}" value="Si">
 			<div class="alert-danger" th:if="${#fields.hasErrors('esJefe')}" th:errors="*{esJefe}">Name Error</div>
 		</div>
 	</div>
 	
 	<div class="form-group row">
 		<div class="col-lg-12 text-center">
-			<input type="reset" class="btn btn-secondary" value="Cancel">
-			<input type="submit" class="btn btn-primary" value="Save Changes">
+			<a class="btn btn-secondary" th:href="@{'/userForm/cancel'}">Cancelar</a>
+			<input type="submit" class="btn btn-primary" value="Save Changes" th:value="${editMode}?'Guardar Usuario':'Crear Usuario'">
 		</div>
 	</div>
 </form>

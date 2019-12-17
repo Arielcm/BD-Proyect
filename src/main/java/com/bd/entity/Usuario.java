@@ -24,9 +24,8 @@ public class Usuario {
     private String direccionUsuario;
 	@NotBlank
     private String dni;
-	@NotBlank
-	@Size(max = 1)
-    private Integer esJefe;
+
+    private String esJefe;
 	@NotBlank
     private String area;
     
@@ -69,10 +68,10 @@ public class Usuario {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
-	public Integer getEsJefe() {
+	public String getEsJefe() {
 		return esJefe;
 	}
-	public void setEsJefe(Integer esJefe) {
+	public void setEsJefe(String esJefe) {
 		this.esJefe = esJefe;
 	}
 	public String getArea() {
@@ -89,7 +88,7 @@ public class Usuario {
 		result = prime * result + ((area == null) ? 0 : area.hashCode());
 		result = prime * result + ((direccionUsuario == null) ? 0 : direccionUsuario.hashCode());
 		result = prime * result + ((dni == null) ? 0 : dni.hashCode());
-		result = prime * result + ((esJefe == null) ? 0 : esJefe.hashCode());
+
 		result = prime * result + ((idUsuario == null) ? 0 : idUsuario.hashCode());
 		result = prime * result + ((nombreUsuario == null) ? 0 : nombreUsuario.hashCode());
 		result = prime * result + ((telefonoUsuario == null) ? 0 : telefonoUsuario.hashCode());
@@ -123,11 +122,6 @@ public class Usuario {
 			if (other.dni != null)
 				return false;
 		} else if (!dni.equals(other.dni))
-			return false;
-		if (esJefe == null) {
-			if (other.esJefe != null)
-				return false;
-		} else if (!esJefe.equals(other.esJefe))
 			return false;
 		if (idUsuario == null) {
 			if (other.idUsuario != null)
