@@ -13,4 +13,6 @@ public interface UsuarioService {
 	public Usuario updateUser(Usuario user) throws Exception;
 	
 	public void deleteUser(Long id) throws Exception;
+	
+	public Usuario findBydni(String dni);
 }

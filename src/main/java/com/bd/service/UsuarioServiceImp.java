@@ -52,4 +52,13 @@ public class UsuarioServiceImp implements UsuarioService{
 		
 	}
 
+	@Override
+	public Usuario findBydni(String dni) {
+		return repository.findBydni(dni);
+		
+	}
+
+
+	
+
 }

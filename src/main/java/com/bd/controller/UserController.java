@@ -3,6 +3,7 @@ package com.bd.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bd.entity.Usuario;
 import com.bd.service.UsuarioService;
@@ -115,5 +117,20 @@ public class UserController {
 		return "redirect:/";
 	}
 
+	@PostMapping("/login")
+	public String login(@Valid
+            @RequestParam(value = "username", required = true) String name, 
+            @RequestParam(value = "password", required = true) String pass)
+		{
+		
+		
+		Usuario user=usuarioService.findBydni(pass);
+		if(user.getApellidoUsuario().equals(name)) {
+			System.out.println("Ingreso Correcto");
+		}else {
+			System.out.println("Los Datos no Son Correctos");
+		}
+		return "redirect:/";
+		}
 	
 }

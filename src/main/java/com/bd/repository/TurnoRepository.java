@@ -1,13 +1,11 @@
 package com.bd.repository;
 
-
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.bd.entity.Usuario;
+import com.bd.entity.Turno;
 
 @Repository
-public interface UsuarioRepository extends CrudRepository<Usuario, Long>{
+public interface TurnoRepository extends CrudRepository<Turno, Long>{
 
-	 public Usuario findBydni(String dni);
 }

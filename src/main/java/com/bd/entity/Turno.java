@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Turno {
@@ -16,7 +17,9 @@ public class Turno {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idTurno;
+	@NotBlank
     private String estadoTurno;
+	@NotBlank
     private String fechaTurno;
     private Long idUsuario;
     

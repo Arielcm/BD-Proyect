@@ -20,7 +20,7 @@ public class Cliente {
 	    private String apellidoCliente;
 	    private String telefonoCliente;
 	    private String direccionCliente;
-	    private Integer dniCuitCliente;
+	    private String dniCuitCliente;
 	    
 	    //Crea Tabla intermedia Cliente-Turno
 	    @ManyToMany
@@ -81,11 +81,11 @@ public class Cliente {
 			this.direccionCliente = direccionCliente;
 		}
 
-		public Integer getDniCuitCliente() {
+		public String getDniCuitCliente() {
 			return dniCuitCliente;
 		}
 
-		public void setDniCuitCliente(Integer dniCuitCliente) {
+		public void setDniCuitCliente(String dniCuitCliente) {
 			this.dniCuitCliente = dniCuitCliente;
 		}
 
