@@ -1,0 +1,64 @@
+
+<form id="ClienteForm" th:object="${ClienteForm}" method="post" class="form" role="form" th:action="@{/ClienteForm}">
+	<input class="form-control" type="hidden" th:field="${ClienteForm.idTurno}">
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Estado de Turno</label>
+		<div class="col-lg-9">
+			<input class="form-control" type="text" th:field="${ClienteForm.estadoTurno}" placeholder="Pendiente" disabled="disabled">
+			<div class="alert-danger" th:if="${#fields.hasErrors('estadoTurno')}" th:errors="*{estadoTurno}">Name Error</div>
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Fecha de Turno</label>
+		<div class="col-lg-9">
+			<input class="form-control" type="date" th:field="${ClienteForm.fechaTurno}">
+			<div class="alert-danger" th:if="${#fields.hasErrors('fechaTurno')}" th:errors="*{fechaTurno}">Name Error</div>
+		</div>
+	</div>
+
+
+ <!-- 
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Cliente Solicitante</label>
+		<div class="col-lg-9">
+	<table id="userList"
+		class="table table-bordered table-hover table-striped">
+		<thead class="thead-light">
+			<tr>
+				<th scope="col">Nombre</th>
+				<th scope="col">Apellido</th>
+				<th scope="col">Direccion</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="us: ${usuarios}">
+				<td th:text="${us.idCliente}" hidden="True"></td>
+				<td th:text="${us.nombreCliente}"></td>
+				<td th:text="${us.apellidoCliente}"></td>
+				<td th:text="${us.direccionCliente}"></td> 
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	</div>
+	
+ -->
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Cliente Solicitante</label>
+		<div class="col-lg-9">
+			<select th:field="${ClienteForm.idUsuario}" class="form-control">
+				<option th:each="usu :${usuarios}" th:value="${usu.idCliente}" th:text="${usu.apellidoCliente} +' '+ ${usu.nombreCliente}">
+				</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<div class="col-lg-12 text-center">
+			<a class="btn btn-secondary" th:href="@{'/TurnosForm/cancel'}">Cancelar</a>
+			<input type="submit" class="btn btn-primary" value="Save Changes" th:value="${editMode}?'Guardar Turno':'Crear Turno'">
+		</div>
+	</div>
+</form>
