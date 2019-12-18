@@ -44,7 +44,11 @@ public class UserController {
 			model.addAttribute("userForm", user);
 			model.addAttribute("formTab","active");
 		}else {
-			try {//Aca tendras error porque este metodo no existe, pero lo crearemos en la siguiente seccion.
+			try {
+				if(user.getEsJefe()==null) {
+					user.setEsJefe("No");
+				}
+				
 				usuarioService.createUser(user);
 				model.addAttribute("userForm", new Usuario());
 				model.addAttribute("listTab","active");
@@ -80,6 +84,9 @@ public class UserController {
 			model.addAttribute("editMode","true");
 		}else {
 			try {
+				if(user.getEsJefe()==null) {
+					user.setEsJefe("No");
+				}
 				usuarioService.updateUser(user);
 				model.addAttribute("userForm", new Usuario());
 				model.addAttribute("listTab","active");

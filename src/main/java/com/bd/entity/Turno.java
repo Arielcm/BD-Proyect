@@ -17,11 +17,12 @@ public class Turno {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idTurno;
-	@NotBlank
+
     private String estadoTurno;
 	@NotBlank
     private String fechaTurno;
-    private Long idUsuario;
+	@NotBlank
+    private String idUsuario;
     
   //Crea Tabla intermedia Turno-Tarea
     @ManyToMany
@@ -57,11 +58,11 @@ public class Turno {
 		this.fechaTurno = fechaTurno;
 	}
 
-	public long getIdUsuario() {
+	public String getIdUsuario() {
 		return idUsuario;
 	}
 
-	public void setIdUsuario(Long idUsuario) {
+	public void setIdUsuario(String idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 

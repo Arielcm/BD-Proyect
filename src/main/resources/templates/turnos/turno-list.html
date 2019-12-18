@@ -3,21 +3,20 @@
 		class="table table-bordered table-hover table-striped">
 		<thead class="thead-light">
 			<tr>
-				<th scope="col">ID</th>
+
 				<th scope="col">Estado</th>
 				<th scope="col">Fecha</th>
-				<th scope="col">Asignado</th>
+				<th scope="col">Id Usuario Asignado</th>
 
 				<th></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="tur: ${listaturnos}">
-				<td th:text="${tur.idTurno}"></td>
 				<td th:text="${tur.estadoTurno}"></td>
 				<td th:text="${tur.fechaTurno}"></td>
 				<td th:text="${tur.idUsuario}"></td>
-				<td><a href="#" th:href="@{'/editUser/'+${tur.idTurno}}"><i class="fas fa-edit"></i></a> |
+				<td><a href="#" th:href="@{'/editTurno/'+${tur.idTurno}}"><i class="fas fa-edit"></i></a> |
 				 <a href="#" th:onclick="'javascript:confirmDelete(\''+${tur.idTurno}+'\');'">
 				 <i	class="fas fa-user-times"></i></a>
 				 </td>
@@ -34,6 +33,6 @@ function confirmDelete(id){
 
 function deleteUser(){
 	var id = $("#userIdHiddenInput").val();
-    window.location = "deleteUser/"+id;
+    window.location = "deleteTurno/"+id;
 }
 </script>

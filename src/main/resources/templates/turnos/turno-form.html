@@ -1,71 +1,36 @@
 
-<form id="TurnoForm" th:object="${TurnoForm}" method="post" class="form" role="form" th:action="${editMode} ?@{/editTurno} :@{/TurnoForm}">
-	<input class="form-control" type="hidden" th:field="${TurnoForm.idTurno}">
+<form id="TurnosForm" th:object="${TurnosForm}" method="post" class="form" role="form" th:action="${editMode} ?@{/editTurno} :@{/TurnosForm}">
+	<input class="form-control" type="hidden" th:field="${TurnosForm.idTurno}">
 	<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Estado de Turno</label>
 		<div class="col-lg-9">
-			<input class="form-control" type="text" th:field="${TurnoForm.estadoTurno}">
+			<input class="form-control" type="text" th:field="${TurnosForm.estadoTurno}" placeholder="Pendiente" disabled="disabled">
 			<div class="alert-danger" th:if="${#fields.hasErrors('estadoTurno')}" th:errors="*{estadoTurno}">Name Error</div>
 		</div>
 	</div>
 	<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Fecha de Turno</label>
 		<div class="col-lg-9">
-			<input class="form-control" type="date" th:field="${TurnoForm.fechaTurno}">
+			<input class="form-control" type="date" th:field="${TurnosForm.fechaTurno}">
 			<div class="alert-danger" th:if="${#fields.hasErrors('fechaTurno')}" th:errors="*{fechaTurno}">Name Error</div>
 		</div>
 	</div>
-	<!-- 
+	
 	<div class="form-group row">
-		<label class="col-lg-3 col-form-label form-control-label">Id Usuario Asignado</label>
+		<label th:text="Usuarios" class="col-lg-3 col-form-label form-control-label">Usuario Asignado</label>
 		<div class="col-lg-9">
-			<input class="form-control" type="text" th:field="${TurnoForm.idUsuario}">
-			<div class="alert-danger" th:if="${#fields.hasErrors('idUsuario')}" th:errors="*{idUsuario}">Name Error</div>
+			<select th:field="${TurnosForm.idUsuario}" class="form-control" size="3">
+				<option th:each="usu :${usuarios}" th:value="${usu.idUsuario}" th:text="${usu.nombreUsuario}">
+				</option>
+			</select>
 		</div>
 	</div>
+	
 
 	<div class="form-group row">
-		<label class="col-lg-3 col-form-label form-control-label">Telefono</label>
-		<div class="col-lg-9">
-			<input class="form-control" type="text" th:field="${userForm.telefonoUsuario}">
-			<div class="alert-danger" th:if="${#fields.hasErrors('telefonoUsuario')}" th:errors="*{telefonoUsuario}">Name Error</div>
-		</div>
-	</div>
-	
-	<div class="form-group row">
-		<label class="col-lg-3 col-form-label form-control-label">Direccion</label>
-		<div class="col-lg-9">
-			<input class="form-control" type="text" th:field="${userForm.direccionUsuario}">
-			<div class="alert-danger" th:if="${#fields.hasErrors('direccionUsuario')}" th:errors="*{direccionUsuario}">Name Error</div>
-		</div>
-	</div>
-	
-	<div class="form-group row">
-		<label class="col-lg-3 col-form-label form-control-label">Area</label>
-		<div class="col-lg-9">
-			
-				<select th:field="${userForm.area}" class="form-control">
-				  <option value="" selected>Seleccionar Area</option>
-				  <option value="Administracion">Administracion</option>
-				  <option value="Comercial">Comercial</option>
-				  <option value="Tecnico">Tecnico</option>
-				</select>
-			<div class="alert-danger" th:if="${#fields.hasErrors('area')}" th:errors="*{area}">Name Error</div>
-		</div>
-	</div>
-	
-	<div class="form-group row">
-		<label class="col-lg-3 col-form-label form-control-label">Es Jefe del Area?</label>
-		<div class="col-lg-9">
-			<input class="form-control" type="checkbox" th:field="${userForm.esJefe}" value="Si">
-			<div class="alert-danger" th:if="${#fields.hasErrors('esJefe')}" th:errors="*{esJefe}">Name Error</div>
-		</div>
-	</div>
-	 -->
-	<div class="form-group row">
 		<div class="col-lg-12 text-center">
-			<a class="btn btn-secondary" th:href="@{'/userForm/cancel'}">Cancelar</a>
-			<input type="submit" class="btn btn-primary" value="Save Changes" th:value="${editMode}?'Guardar Usuario':'Crear Usuario'">
+			<a class="btn btn-secondary" th:href="@{'/TurnosForm/cancel'}">Cancelar</a>
+			<input type="submit" class="btn btn-primary" value="Save Changes" th:value="${editMode}?'Guardar Turno':'Crear Turno'">
 		</div>
 	</div>
 </form>
