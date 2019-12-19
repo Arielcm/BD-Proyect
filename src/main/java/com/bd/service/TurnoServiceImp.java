@@ -49,6 +49,11 @@ public class TurnoServiceImp implements TurnoService{
 		
 	}
 
+	@Override
+	public Iterable<Turno> findAllByidUsuario(String idUsuario) {
+		return repository.findAllByidUsuario(idUsuario);
+	}
+
 	
 
 }

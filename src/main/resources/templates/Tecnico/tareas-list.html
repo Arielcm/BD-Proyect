@@ -1,0 +1,24 @@
+<div class="table-responsive">
+	<table id="turnoslist"
+		class="table table-bordered table-hover table-striped">
+		<thead class="thead-light">
+			<tr>
+
+				<th scope="col">Estado</th>
+				<th scope="col">Fecha</th>
+				<th scope="col">Id Usuario Asignado</th>
+				<th scope="col">Id Cliente</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="tur: ${listaturnos}">
+				<td th:text="${tur.estadoTurno}"></td>
+				<td th:text="${tur.fechaTurno}"></td>
+				<td th:text="${tur.idUsuario}"></td>
+				<td th:text="${tur.idCliente}"></td>
+				<td><a href="#" th:href="@{'/editTurnoTecnico/'+${tur.idTurno}+'/'+${tur.idCliente}}"><i class="fas fa-edit"></i></a>Detalles
+				 </td>
+			</tr>
+		</tbody>
+	</table>
+</div>

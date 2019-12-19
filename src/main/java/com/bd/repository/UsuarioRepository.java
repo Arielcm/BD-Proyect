@@ -10,4 +10,6 @@ import com.bd.entity.Usuario;
 public interface UsuarioRepository extends CrudRepository<Usuario, Long>{
 
 	 public Usuario findBydni(String dni);
+	 
+	 public Iterable<Usuario> findByarea(String area);
 }

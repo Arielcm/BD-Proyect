@@ -6,6 +6,8 @@ public interface UsuarioService {
 
 	public Iterable<Usuario> getAllUsuarios();
 	
+	public Iterable<Usuario> getAllUsuariosbyarea(String area);
+	
 	public Usuario createUser(Usuario formUser) throws Exception;
 	
 	public Usuario getUsuarioById(Long id) throws Exception;

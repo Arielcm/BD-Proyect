@@ -32,7 +32,7 @@ public class TurnoController {
 	@GetMapping("/TurnosForm")
 	public String TurnosForm(Model model) {
 		model.addAttribute("TurnosForm", new Turno());
-		model.addAttribute("usuarios",usuarioService.getAllUsuarios());
+		model.addAttribute("usuarios",usuarioService.getAllUsuariosbyarea("Tecnico"));
 		model.addAttribute("listaturnos",turnoService.getAllTurnos());
 		model.addAttribute("usuarioss",clienteService.getAllCliente());
 		model.addAttribute("listTab","active");
@@ -50,23 +50,22 @@ public class TurnoController {
 		
 		if(result.hasErrors()) {
 			model.addAttribute("TurnosForm", turno);
-			model.addAttribute("usuarios",usuarioService.getAllUsuarios());
+			model.addAttribute("usuarios",usuarioService.getAllUsuariosbyarea("Tecnico"));
 			model.addAttribute("usuarioss",clienteService.getAllCliente());
 			model.addAttribute("formTab","active");
 		}else {
 			try {
 				turno.setEstadoTurno("Pendiente");
-				System.out.println(turno.toString()+"Turno");
 				turnoService.createTurno(turno);
 				model.addAttribute("TurnosForm", new Turno());
-				model.addAttribute("usuarios",usuarioService.getAllUsuarios());
+				model.addAttribute("usuarios",usuarioService.getAllUsuariosbyarea("Tecnico"));
 				model.addAttribute("usuarioss",clienteService.getAllCliente());
 				model.addAttribute("listTab","active");
 			} catch (Exception e) {
 				model.addAttribute("formError",e.getMessage());
 				model.addAttribute("TurnosForm", turno);
 				model.addAttribute("formTab","active");
-				model.addAttribute("usuarios",usuarioService.getAllUsuarios());
+				model.addAttribute("usuarios",usuarioService.getAllUsuariosbyarea("Tecnico"));
 				model.addAttribute("usuarioss",clienteService.getAllCliente());
 			}
 		}
@@ -80,7 +79,8 @@ public class TurnoController {
 	public String getEdiTurnoForm(Model model, @PathVariable(name="id") Long id) throws Exception {
 		Turno turno = turnoService.getTurnoById(id);
 		model.addAttribute("listaturnos",turnoService.getAllTurnos());
-		model.addAttribute("usuarios",usuarioService.getAllUsuarios());
+		model.addAttribute("usuarios",usuarioService.getAllUsuariosbyarea("Tecnico"));
+		model.addAttribute("usuarioss",clienteService.getAllCliente());
 		model.addAttribute("TurnosForm", turno);
 		model.addAttribute("formTab","active");//Activa el tab del formulario.
 		
@@ -100,13 +100,13 @@ public class TurnoController {
 				turno.setEstadoTurno("Pendiente");
 				turnoService.createTurno(turno);
 				model.addAttribute("TurnosForm", new Turno());
-				model.addAttribute("usuarios",usuarioService.getAllUsuarios());
+				model.addAttribute("usuarios",usuarioService.getAllUsuariosbyarea("Tecnico"));
 				model.addAttribute("listTab","active");
 			} catch (Exception e) {
 				model.addAttribute("formError",e.getMessage());
 				model.addAttribute("TurnosForm", turno);
 				model.addAttribute("formTab","active");
-				model.addAttribute("usuarios",usuarioService.getAllUsuarios());
+				model.addAttribute("usuarios",usuarioService.getAllUsuariosbyarea("Tecnico"));
 				model.addAttribute("editMode","true");
 			}
 		}

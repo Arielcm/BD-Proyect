@@ -9,6 +9,8 @@ public interface TurnoService {
 
 	public Iterable<Turno> getAllTurnos();
 	
+	public Iterable<Turno> findAllByidUsuario(String idUsuario);
+	
 	public Turno createTurno(Turno TurnoForm) throws Exception;
 	
 	public Turno getTurnoById(Long id) throws Exception;

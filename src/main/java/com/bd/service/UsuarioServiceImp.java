@@ -58,6 +58,11 @@ public class UsuarioServiceImp implements UsuarioService{
 		
 	}
 
+	@Override
+	public Iterable<Usuario> getAllUsuariosbyarea(String area) {
+		return repository.findByarea(area);
+	}
+
 
 	
 
