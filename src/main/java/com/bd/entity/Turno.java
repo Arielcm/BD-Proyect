@@ -23,8 +23,18 @@ public class Turno {
     private String fechaTurno;
 	@NotBlank
     private String idUsuario;
+
+	private Long idCliente;
     
-  //Crea Tabla intermedia Turno-Tarea
+  public Long getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
+	}
+
+	//Crea Tabla intermedia Turno-Tarea
     @ManyToMany
     @JoinTable(name="Turno_tiene_Tarea"
     	,joinColumns = @JoinColumn(name="Turno_id")
@@ -126,7 +136,7 @@ public class Turno {
 	@Override
 	public String toString() {
 		return "Turno [idTurno=" + idTurno + ", estadoTurno=" + estadoTurno + ", fechaTurno=" + fechaTurno
-				+ ", idUsuario=" + idUsuario + ", tareas=" + tareas + "]";
+				+ ", idUsuario=" + idUsuario + ", idCliente=" + idCliente + ", tareas=" + tareas + "]";
 	}
     
   

@@ -7,8 +7,7 @@
 				<th scope="col">Estado</th>
 				<th scope="col">Fecha</th>
 				<th scope="col">Id Usuario Asignado</th>
-
-				<th></th>
+				<th scope="col">Id Cliente</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -16,6 +15,7 @@
 				<td th:text="${tur.estadoTurno}"></td>
 				<td th:text="${tur.fechaTurno}"></td>
 				<td th:text="${tur.idUsuario}"></td>
+				<td th:text="${tur.idCliente}"></td>
 				<td><a href="#" th:href="@{'/editTurno/'+${tur.idTurno}}"><i class="fas fa-edit"></i></a> |
 				 <a href="#" th:onclick="'javascript:confirmDelete(\''+${tur.idTurno}+'\');'">
 				 <i	class="fas fa-user-times"></i></a>

@@ -23,13 +23,13 @@ public class Cliente {
 	    private String dniCuitCliente;
 	    
 	    //Crea Tabla intermedia Cliente-Turno
-	    @ManyToMany
+/*	    @ManyToMany
 	    @JoinTable(name="Solicita"
 	    	,joinColumns = @JoinColumn(name="Cliente_id")
 	    	,inverseJoinColumns = @JoinColumn(name="Turno_id")
 	    		)
 	    private Set<Turno> turnos;
-	    
+*/	    
 	  //Crea Tabla intermedia Cliente-Servicio
 	    @ManyToMany
 	    @JoinTable(name="Contrata_Servicio"
@@ -88,7 +88,7 @@ public class Cliente {
 		public void setDniCuitCliente(String dniCuitCliente) {
 			this.dniCuitCliente = dniCuitCliente;
 		}
-
+/*
 		public Set<Turno> getTurnos() {
 			return turnos;
 		}
@@ -96,7 +96,7 @@ public class Cliente {
 		public void setTurnos(Set<Turno> turnos) {
 			this.turnos = turnos;
 		}
-
+*/
 		public Set<Servicio> getServicios() {
 			return Servicios;
 		}
@@ -116,7 +116,7 @@ public class Cliente {
 			result = prime * result + ((idCliente == null) ? 0 : idCliente.hashCode());
 			result = prime * result + ((nombreCliente == null) ? 0 : nombreCliente.hashCode());
 			result = prime * result + ((telefonoCliente == null) ? 0 : telefonoCliente.hashCode());
-			result = prime * result + ((turnos == null) ? 0 : turnos.hashCode());
+//			result = prime * result + ((turnos == null) ? 0 : turnos.hashCode());
 			return result;
 		}
 
@@ -164,19 +164,19 @@ public class Cliente {
 					return false;
 			} else if (!telefonoCliente.equals(other.telefonoCliente))
 				return false;
-			if (turnos == null) {
+/*			if (turnos == null) {
 				if (other.turnos != null)
 					return false;
 			} else if (!turnos.equals(other.turnos))
 				return false;
-			return true;
-		}
+*/			return true;
+	}
 
 		@Override
 		public String toString() {
 			return "Cliente [idCliente=" + idCliente + ", nombreCliente=" + nombreCliente + ", apellidoCliente="
 					+ apellidoCliente + ", telefonoCliente=" + telefonoCliente + ", direccionCliente="
-					+ direccionCliente + ", dniCuitCliente=" + dniCuitCliente + ", turnos=" + turnos + ", Servicios="
+					+ direccionCliente + ", dniCuitCliente=" + dniCuitCliente 
 					+ Servicios + "]";
 		}
 	    

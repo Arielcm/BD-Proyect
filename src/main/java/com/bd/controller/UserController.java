@@ -124,20 +124,5 @@ public class UserController {
 		return "redirect:/";
 	}
 
-	@PostMapping("/login")
-	public String login(@Valid
-            @RequestParam(value = "username", required = true) String name, 
-            @RequestParam(value = "password", required = true) String pass)
-		{
-		
-		
-		Usuario user=usuarioService.findBydni(pass);
-		if(user.getApellidoUsuario().equals(name)) {
-			System.out.println("Ingreso Correcto");
-		}else {
-			System.out.println("Los Datos no Son Correctos");
-		}
-		return "redirect:/";
-		}
 	
 }

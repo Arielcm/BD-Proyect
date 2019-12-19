@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bd.entity.Turno;
-import com.bd.entity.Usuario;
+import com.bd.service.ClienteService;
 import com.bd.service.TurnoService;
 import com.bd.service.UsuarioService;
 
@@ -26,11 +26,15 @@ public class TurnoController {
 	@Autowired
 	UsuarioService usuarioService;
 	
+	@Autowired
+	ClienteService clienteService;
+	
 	@GetMapping("/TurnosForm")
 	public String TurnosForm(Model model) {
 		model.addAttribute("TurnosForm", new Turno());
 		model.addAttribute("usuarios",usuarioService.getAllUsuarios());
 		model.addAttribute("listaturnos",turnoService.getAllTurnos());
+		model.addAttribute("usuarioss",clienteService.getAllCliente());
 		model.addAttribute("listTab","active");
 		return "turnos/turno-view";
 	}
@@ -47,23 +51,28 @@ public class TurnoController {
 		if(result.hasErrors()) {
 			model.addAttribute("TurnosForm", turno);
 			model.addAttribute("usuarios",usuarioService.getAllUsuarios());
+			model.addAttribute("usuarioss",clienteService.getAllCliente());
 			model.addAttribute("formTab","active");
 		}else {
 			try {
 				turno.setEstadoTurno("Pendiente");
+				System.out.println(turno.toString()+"Turno");
 				turnoService.createTurno(turno);
 				model.addAttribute("TurnosForm", new Turno());
 				model.addAttribute("usuarios",usuarioService.getAllUsuarios());
+				model.addAttribute("usuarioss",clienteService.getAllCliente());
 				model.addAttribute("listTab","active");
 			} catch (Exception e) {
 				model.addAttribute("formError",e.getMessage());
 				model.addAttribute("TurnosForm", turno);
 				model.addAttribute("formTab","active");
 				model.addAttribute("usuarios",usuarioService.getAllUsuarios());
+				model.addAttribute("usuarioss",clienteService.getAllCliente());
 			}
 		}
 
 		model.addAttribute("listaturnos",turnoService.getAllTurnos());
+		model.addAttribute("usuarioss",clienteService.getAllCliente());
 		return "turnos/turno-view";
 	}
 	
