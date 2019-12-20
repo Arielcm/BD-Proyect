@@ -4,6 +4,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -19,15 +21,16 @@ public class indexController {
 	@PostMapping("/login")
 	public String login(@Valid
             @RequestParam(value = "username", required = true) String name, 
-            @RequestParam(value = "password", required = true) String pass)
+            @RequestParam(value = "password", required = true) String pass, Model model)
 		{
-			
+		try {
 		Usuario user=usuarioService.findBydni(pass);
+		System.out.println(user.getEsJefe());
+		System.out.println(user.getEsJefe().toString());
 	
 		String red="";
 		if(user.getApellidoUsuario().equals(name)) {
-			System.out.println("Ingreso Correcto");
-			
+			System.out.println();
 			switch (user.getArea()) {
 			case "Root":
 				red="redirect:/userForm";
@@ -36,17 +39,26 @@ public class indexController {
 				red="redirect:/ClienteForm";
 				break;
 			case "Tecnico":
-					if(user.getEsJefe().equals("Si")) {
-					red="redirect:/TurnosForm";
+					if(user.getEsJefe().toString().equals("No")) {
+						Long id=user.getIdUsuario();
+						red="redirect:/TecnicoForm/"+id;
+					
 					}else {
-						System.out.println("Sale por aca");
+						red="redirect:/TurnosForm";
 					}
 			break;
 			}
 			
 		}else {
-			System.out.println("Los Datos no Son Correctos");
+			model.addAttribute("logError","logError");
+			red = "index";
 		}
 		return red;
+	
+		}catch(Exception e){
+			model.addAttribute("logError","logError");
+			return "index";
 		}
+
+}
 }

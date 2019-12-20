@@ -16,8 +16,8 @@
 				<td th:text="${tur.fechaTurno}"></td>
 				<td th:text="${tur.idUsuario}"></td>
 				<td th:text="${tur.idCliente}"></td>
-				<td><a href="#" th:href="@{'/editTurnoTecnico/'+${tur.idTurno}+'/'+${tur.idCliente}}"><i class="fas fa-edit"></i></a>Detalles
-				 </td>
+				<td><a href="#" th:href="@{'/editTurnoTecnico/'+${tur.idTurno}}"><i class="fas fa-edit"></i></a></td>
+				<td><a href="#" th:href="@{'/detalleCliente/'+${tur.idCliente}}"><i class="fas fa-edit"></i>Detalle Cliente</a></td>
 			</tr>
 		</tbody>
 	</table>
