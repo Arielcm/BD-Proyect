@@ -16,10 +16,10 @@
 	</div>
 	
 	<div class="form-group row">
-		<label th:text="Usuarios" class="col-lg-3 col-form-label form-control-label">Usuario Asignado</label>
+		<label th:text="Usuarios" class="col-lg-3 col-form-label form-control-label">Tecnico Asignado</label>
 		<div class="col-lg-9">
 			<select th:field="${TurnosForm.idUsuario}" class="form-control" size="3">
-				<option th:each="usu :${usuarios}" th:value="${usu.idUsuario}" th:text="${usu.nombreUsuario}">
+				<option th:each="usu :${usuarios}" th:value="${usu.idUsuario}" th:text="${usu.nombreUsuario}+' '+ ${usu.apellidoUsuario}">
 				</option>
 			</select>
 		</div>

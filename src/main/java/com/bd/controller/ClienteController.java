@@ -40,7 +40,7 @@ public class ClienteController {
 	@PostMapping("/ClienteForm")
 	public String postUserForm(@Valid @ModelAttribute("TurnosForm")Turno turno, BindingResult result, ModelMap model) {
 		turno.setEstadoTurno("Pendiente");
-		turno.setIdUsuario("2");
+		turno.setIdUsuario("1");
 /*
 		System.out.println(turno.toString()+"Cliente");
 		if(result.hasErrors()) {
